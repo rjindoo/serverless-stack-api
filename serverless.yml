@@ -41,6 +41,11 @@ functions:
       - http:
         path: notes
         method: get
+  delete:
+    handler: delete.main
+    events:
+      - http: notes/{id}
+      - method: delete
   update:
     # - path: url path is /notes/{id}
     # - method: PUT request
