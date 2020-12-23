@@ -35,10 +35,24 @@ provider:
       Resource: "arn:aws:dynamodb:us-west-1:*:*"
 
 functions:
-  # Defines an HTTP API endpoint that calls the main function in create.js
-  # - path: url path is /notes
-  # - method: POST request
+  list:
+    handler: list.main
+    events:
+      - http:
+        path: notes
+        method: get
+  update:
+    # - path: url path is /notes/{id}
+    # - method: PUT request
+    handler: update.main
+    events:
+      - http:
+         path: notes/{id}
+         method: put
   create:
+    # Defines an HTTP API endpoint that calls the main function in create.js
+    # - path: url path is /notes
+    # - method: POST request
     handler: create.main
     events:
       - http:
